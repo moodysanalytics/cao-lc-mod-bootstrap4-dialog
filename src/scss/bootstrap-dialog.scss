@@ -1,4 +1,16 @@
 .bootstrap-dialog {
+
+    @media (min-width: 576px) {
+        .modal-dialog {
+            max-width: 65%;
+        }
+    }
+
+    .modal-body {
+        overflow: auto;
+    }
+
+
     .modal-header {
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
@@ -43,12 +55,7 @@
         filter: alpha(opacity=100);
     }
 
-    @media (min-width: 1172px) {
-        .modal-dialog {
-            max-width: 95%;
-        }
-    }
-
+  
     &type-default .modal-header {
         background-color: #fff;
     }
