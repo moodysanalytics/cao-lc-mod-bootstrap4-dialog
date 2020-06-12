@@ -1,4 +1,16 @@
 .bootstrap-dialog {
+
+    @media (min-width: 576px) {
+        .modal-dialog {
+            max-width: 65%;
+        }
+    }
+
+    .modal-body {
+        overflow: auto;
+    }
+
+
     .modal-header {
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
