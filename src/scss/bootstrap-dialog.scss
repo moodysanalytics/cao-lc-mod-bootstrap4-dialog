@@ -13,6 +13,8 @@
                 border-top-right-radius: $modal-header-border-top-right-radius;
 
                 .bootstrap-dialog-header {
+                    display:block;
+
                     .bootstrap-dialog-title {
                         display: inline-block;
                         color: $bootstrap-dialog-title-color;

@@ -6,9 +6,9 @@ var gulp = require("gulp"),
     sass = require("gulp-sass"),
     minifyCSS = require("gulp-minify-css"),
     notify = require("gulp-notify"),
-    clean = require("gulp-clean"),
     rename = require("gulp-rename"),
-    uglify = require("gulp-uglify");
+    uglify = require("gulp-uglify"),
+    del = require('del');
 
 gulp.task("sass", function (cb) {
     gulp.src("src/scss/bootstrap-dialog.scss")
@@ -39,9 +39,10 @@ gulp.task("js", function (cb) {
 });
 
 gulp.task("clean", function (cb) {
-    gulp.src(["dist/"], { read: false, allowEmpty: true })
-        .pipe(clean())
-
+    del([
+        "dist/css/**",
+        "dist/js/**"
+    ]);
     cb();
 });
 
