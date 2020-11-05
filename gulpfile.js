@@ -14,7 +14,6 @@ gulp.task("sass", function (cb) {
     gulp.src("src/scss/bootstrap-dialog.scss")
         .pipe(sass())
         .pipe(gulp.dest("dist/css"))
-        .pipe(gulp.dest("src/css"))
         .pipe(rename("bootstrap-dialog.min.css"))
         .pipe(minifyCSS())
         .pipe(gulp.dest("dist/css"))

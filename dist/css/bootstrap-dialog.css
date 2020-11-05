@@ -5,7 +5,8 @@
     border-top-left-radius: 4px;
     border-top-right-radius: 4px; }
     .modal.bootstrap-dialog .modal-dialog .modal-content .modal-header .bootstrap-dialog-header {
-      display: block; }
+      display: block;
+      flex-grow: 1; }
       .modal.bootstrap-dialog .modal-dialog .modal-content .modal-header .bootstrap-dialog-header .bootstrap-dialog-title {
         display: inline-block;
         color: #FFFFFF;
@@ -19,19 +20,45 @@
           opacity: 1; }
   .modal.bootstrap-dialog .modal-dialog .modal-content .modal-body .bootstrap-dialog-body .bootstrap-dialog-message {
     font-size: 1.077em; }
+  .modal.bootstrap-dialog .modal-dialog .modal-content .modal-body .bootstrap-dialog-iframe {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none; }
   .modal.bootstrap-dialog.type-info .modal-header {
     background-color: #17A2B8; }
   .modal.bootstrap-dialog.type-primary .modal-header {
-    background-color: #007BFF; }
+    background-color: #007BFF;
+    color: #FFFFFF; }
+    .modal.bootstrap-dialog.type-primary .modal-header button.close {
+      color: #FFFFFF; }
   .modal.bootstrap-dialog.type-secondary .modal-header {
-    background-color: #6C757D; }
+    background-color: #6C757D;
+    color: #FFFFFF; }
+    .modal.bootstrap-dialog.type-secondary .modal-header button.close {
+      color: #FFFFFF; }
   .modal.bootstrap-dialog.type-success .modal-header {
-    background-color: #28A745; }
+    background-color: #28A745;
+    color: #FFFFFF; }
+    .modal.bootstrap-dialog.type-success .modal-header button.close {
+      color: #FFFFFF; }
   .modal.bootstrap-dialog.type-warning .modal-header {
-    background-color: #FFC107; }
+    background-color: #FFC107;
+    color: #FFFFFF; }
+    .modal.bootstrap-dialog.type-warning .modal-header button.close {
+      color: #FFFFFF; }
   .modal.bootstrap-dialog.type-danger .modal-header {
-    background-color: #DC3545; }
+    background-color: #DC3545;
+    color: #FFFFFF; }
+    .modal.bootstrap-dialog.type-danger .modal-header button.close {
+      color: #FFFFFF; }
   .modal.bootstrap-dialog.type-light .modal-header {
-    background-color: #F8F9FA; }
+    background-color: #F8F9FA;
+    color: #FFFFFF; }
+    .modal.bootstrap-dialog.type-light .modal-header .bootstrap-dialog-close-button {
+      color: #FFFFFF; }
   .modal.bootstrap-dialog.type-dark .modal-header {
-    background-color: #343A40; }
+    background-color: #343A40;
+    color: #FFFFFF; }
+    .modal.bootstrap-dialog.type-dark .modal-header .bootstrap-dialog-close-button {
+      color: #FFFFFF; }

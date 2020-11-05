@@ -13,7 +13,8 @@
                 border-top-right-radius: $modal-header-border-top-right-radius;
 
                 .bootstrap-dialog-header {
-                    display:block;
+                    display: block;
+                    flex-grow: 1;
 
                     .bootstrap-dialog-title {
                         display: inline-block;
@@ -31,23 +32,31 @@
                             opacity: $bootstrap-dialog-close-button-hover-opacity;
                         }
 
-                        button.close{}
+                        button.close {
+                        }
                     }
                 }
             }
-            .modal-body{
-                .bootstrap-dialog-body{
+
+            .modal-body {
+                .bootstrap-dialog-body {
                     .bootstrap-dialog-message {
-        font-size: $bootstrap-dialog-message-font-size;
-    }
+                        font-size: $bootstrap-dialog-message-font-size;
+                    }
+                }
+
+                .bootstrap-dialog-iframe{
+                    width:100%;
+                    margin:0;
+                    padding:0;
+                    border:none;
                 }
             }
-            .modal-footer{
 
+            .modal-footer {
             }
         }
     }
-
     // THEMES
     &.type-info {
         .modal-header {
@@ -58,42 +67,77 @@
     &.type-primary {
         .modal-header {
             background-color: $bootstrap-dialog-primary-modal-header-background-color;
+            color: $bootstrap-dialog-primary-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-primary-modal-header-color;
+            }
         }
     }
 
     &.type-secondary {
         .modal-header {
             background-color: $bootstrap-dialog-secondary-modal-header-background-color;
+            color: $bootstrap-dialog-secondary-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-secondary-modal-header-color;
+            }
         }
     }
 
     &.type-success {
         .modal-header {
             background-color: $bootstrap-dialog-success-modal-header-background-color;
+            color: $bootstrap-dialog-success-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-success-modal-header-color;
+            }
         }
     }
 
     &.type-warning {
         .modal-header {
             background-color: $bootstrap-dialog-warning-modal-header-background-color;
+            color: $bootstrap-dialog-warning-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-warning-modal-header-color;
+            }
         }
     }
 
     &.type-danger {
         .modal-header {
             background-color: $bootstrap-dialog-danger-modal-header-background-color;
+            color: $bootstrap-dialog-danger-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-danger-modal-header-color;
+            }
         }
     }
 
     &.type-light {
         .modal-header {
             background-color: $bootstrap-dialog-light-modal-header-background-color;
+            color: $bootstrap-dialog-light-modal-header-color;
+
+            .bootstrap-dialog-close-button {
+                color: $bootstrap-dialog-light-modal-header-color;
+            }
         }
     }
 
     &.type-dark {
         .modal-header {
             background-color: $bootstrap-dialog-dark-modal-header-background-color;
+            color: $bootstrap-dialog-dark-modal-header-color;
+
+            .bootstrap-dialog-close-button {
+                color: $bootstrap-dialog-dark-modal-header-color;
+            }
         }
     }
 }
