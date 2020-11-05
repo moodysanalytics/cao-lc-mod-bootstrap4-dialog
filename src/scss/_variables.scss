@@ -1,0 +1,41 @@
+$bootstrap-dialog-font-size: 13px !default;
+
+$modal-header-radius: 4px !default;
+$modal-header-border-top-left-radius: $modal-header-radius;
+$modal-header-border-top-right-radius: $modal-header-radius;
+
+$bootstrap-dialog-title-color: #FFFFFF !default;
+$bootstrap-dialog-title-font-size: 1.231em !default;
+
+$bootstrap-dialog-message-font-size: 1.077em !default;
+
+$bootstrap-dialog-close-button-font-size: 1.538em !default;
+$bootstrap-dialog-close-button-opacity: 0.9 !default;
+
+$bootstrap-dialog-close-button-hover-opacity: 1 !default;
+
+/** themes **/
+
+// info
+$bootstrap-dialog-info-modal-header-background-color: #17A2B8 !default;
+
+// primary
+$bootstrap-dialog-primary-modal-header-background-color: #007BFF !default;
+
+// secondary
+$bootstrap-dialog-secondary-modal-header-background-color: #6C757D !default;
+
+// success
+$bootstrap-dialog-success-modal-header-background-color: #28A745 !default;
+
+// warning
+$bootstrap-dialog-warning-modal-header-background-color: #FFC107 !default;
+
+// danger
+$bootstrap-dialog-danger-modal-header-background-color: #DC3545 !default;
+
+// light
+$bootstrap-dialog-light-modal-header-background-color: #F8F9FA !default;
+
+// dark
+$bootstrap-dialog-dark-modal-header-background-color: #343A40 !default;

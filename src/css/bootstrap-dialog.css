@@ -1,105 +1,35 @@
-.bootstrap-dialog .modal-header {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px; }
-
-.bootstrap-dialog .bootstrap-dialog-title {
-  color: #fff;
-  display: inline-block;
-  font-size: 16px; }
-
-.bootstrap-dialog .bootstrap-dialog-message {
-  font-size: 14px; }
-
-.bootstrap-dialog .bootstrap-dialog-button-icon {
-  margin-right: 3px; }
-
-.bootstrap-dialog .bootstrap-dialog-close-button {
-  font-size: 20px;
-  float: right;
-  opacity: 0.9;
-  filter: alpha(opacity=90); }
-
-.bootstrap-dialog .bootstrap-dialog-close-button:hover {
-  cursor: pointer;
-  opacity: 1;
-  filter: alpha(opacity=100); }
-
-@media (min-width: 1172px) {
-  .bootstrap-dialog .modal-xl {
-    max-width: 95%; } }
-
-.bootstrap-dialogtype-default .modal-header {
-  background-color: #fff; }
-
-.bootstrap-dialogtype-default .bootstrap-dialog-title {
-  color: #333; }
-
-.bootstrap-dialogtype-info .modal-header {
-  background-color: #17a2b8; }
-
-.bootstrap-dialogtype-primary .modal-header {
-  background-color: #007bff; }
-
-.bootstrap-dialogtype-secondary .modal-header {
-  background-color: #6c757d; }
-
-.bootstrap-dialogtype-success .modal-header {
-  background-color: #28a745; }
-
-.bootstrap-dialogtype-warning .modal-header {
-  background-color: #ffc107; }
-
-.bootstrap-dialogtype-danger .modal-header {
-  background-color: #dc3545; }
-
-.bootstrap-dialogtype-light .modal-header {
-  background-color: #f8f9fa; }
-
-.bootstrap-dialogtype-dark .modal-header {
-  background-color: #343a40; }
-
-.bootstrap-dialogsize-large .bootstrap-dialog-title {
-  font-size: 24px; }
-
-.bootstrap-dialogsize-large .bootstrap-dialog-close-button {
-  font-size: 30px; }
-
-.bootstrap-dialogsize-large .bootstrap-dialog-message {
-  font-size: 18px; }
-
-.icon-spin {
-  display: inline-block;
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
-  -webkit-animation: spin 2s infinite linear;
-  animation: spin 2s infinite linear; }
-
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg); }
-  100% {
-    -moz-transform: rotate(359deg); } }
-
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg); }
-  100% {
-    -webkit-transform: rotate(359deg); } }
-
-@-o-keyframes spin {
-  0% {
-    -o-transform: rotate(0deg); }
-  100% {
-    -o-transform: rotate(359deg); } }
-
-@-ms-keyframes spin {
-  0% {
-    -ms-transform: rotate(0deg); }
-  100% {
-    -ms-transform: rotate(359deg); } }
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(359deg); } }
+/** themes **/
+.modal.bootstrap-dialog {
+  font-size: 13px; }
+  .modal.bootstrap-dialog .modal-dialog .modal-content .modal-header {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px; }
+    .modal.bootstrap-dialog .modal-dialog .modal-content .modal-header .bootstrap-dialog-header .bootstrap-dialog-title {
+      display: inline-block;
+      color: #FFFFFF;
+      font-size: 1.231em; }
+    .modal.bootstrap-dialog .modal-dialog .modal-content .modal-header .bootstrap-dialog-header .bootstrap-dialog-close-button {
+      float: right;
+      font-size: 1.538em;
+      opacity: 0.9; }
+      .modal.bootstrap-dialog .modal-dialog .modal-content .modal-header .bootstrap-dialog-header .bootstrap-dialog-close-button:hover {
+        cursor: pointer;
+        opacity: 1; }
+  .modal.bootstrap-dialog .modal-dialog .modal-content .modal-body .bootstrap-dialog-body .bootstrap-dialog-message {
+    font-size: 1.077em; }
+  .modal.bootstrap-dialog.type-info .modal-header {
+    background-color: #17A2B8; }
+  .modal.bootstrap-dialog.type-primary .modal-header {
+    background-color: #007BFF; }
+  .modal.bootstrap-dialog.type-secondary .modal-header {
+    background-color: #6C757D; }
+  .modal.bootstrap-dialog.type-success .modal-header {
+    background-color: #28A745; }
+  .modal.bootstrap-dialog.type-warning .modal-header {
+    background-color: #FFC107; }
+  .modal.bootstrap-dialog.type-danger .modal-header {
+    background-color: #DC3545; }
+  .modal.bootstrap-dialog.type-light .modal-header {
+    background-color: #F8F9FA; }
+  .modal.bootstrap-dialog.type-dark .modal-header {
+    background-color: #343A40; }
