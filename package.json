@@ -11,18 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GedMarc/bootstrap4-dialog"
+    "url": "https://github.com/moodysanalytics/bootstrap-dialog"
   },
   "keywords": [
     "bootstrap",
     "dialog"
   ],
-  "author": "eugenemayer/nakupanda/gedmarc",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/GedMarc/bootstrap4-dialog/issues"
-  },
-  "homepage": "https://github.com/GedMarc/bootstrap4-dialog",
+  "homepage": "https://github.com/moodysanalytics/bootstrap-dialog/packages",
   "devDependencies": {
     "bootstrap": ">=4.3.1",
     "eslint": ">=0.6.2",
@@ -37,5 +33,6 @@
     "gulp-streamify": "0.0.5",
     "gulp-uglify": ">=0.3.0",
     "vinyl-source-stream": "^0.1.1"
-  }
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
