@@ -1,7 +1,7 @@
 {
-  "name": "bootstrap-dialog",
+  "name": "@moodysanalytics/bootstrap-dialog",
   "version": "4.3.1",
-  "description": "Make use of Bootstrap Modal more monkey-friendly.",
+  "description": "Bootstrap 4 Dialog",
   "directories": {
     "example": "examples"
   },
@@ -11,23 +11,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GedMarc/bootstrap4-dialog"
+    "url": "https://github.com/moodysanalytics/bootstrap-dialog/"
   },
   "keywords": [
     "bootstrap",
     "dialog"
   ],
-  "author": "eugenemayer/nakupanda/gedmarc",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/GedMarc/bootstrap4-dialog/issues"
-  },
-  "homepage": "https://github.com/GedMarc/bootstrap4-dialog",
+  "homepage": "https://github.com/moodysanalytics/bootstrap-dialog/packages",
   "devDependencies": {
     "bootstrap": ">=4.3.1",
+    "del": "^6.0.0",
     "eslint": ">=0.6.2",
     "gulp": "^4.0.2",
-    "gulp-clean": ">=0.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-eslint": ">=0.1.7",
     "gulp-minify-css": "^0.3.4",
@@ -37,5 +33,8 @@
     "gulp-streamify": "0.0.5",
     "gulp-uglify": ">=0.3.0",
     "vinyl-source-stream": "^0.1.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }

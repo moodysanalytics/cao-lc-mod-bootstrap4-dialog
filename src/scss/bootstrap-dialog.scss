@@ -1,149 +1,143 @@
-.bootstrap-dialog {
-    .modal-header {
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-    }
+@import 'variables';
 
-    .bootstrap-dialog-title {
-        color: #fff;
-        display: inline-block;
-        font-size: 16px;
-    }
+.modal-backdrop {
+}
 
-    .bootstrap-dialog-message {
-        font-size: 14px;
-    }
+.modal.bootstrap-dialog {
+    font-size: $bootstrap-dialog-font-size;
 
-    .bootstrap-dialog-button-icon {
-        margin-right: 3px;
-    }
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+                border-top-left-radius: $modal-header-border-top-left-radius;
+                border-top-right-radius: $modal-header-border-top-right-radius;
 
-    .bootstrap-dialog-close-button {
-        font-size: 20px;
-        float: right;
-        opacity: 0.9;
-        filter: alpha(opacity=90);
-    }
+                .bootstrap-dialog-header {
+                    display: block;
+                    flex-grow: 1;
 
-    .bootstrap-dialog-close-button:hover {
-        cursor: pointer;
-        opacity: 1;
-        filter: alpha(opacity=100);
-    }
+                    .bootstrap-dialog-title {
+                        display: inline-block;
+                        color: $bootstrap-dialog-title-color;
+                        font-size: $bootstrap-dialog-title-font-size;
+                    }
 
-    @media (min-width: 1172px) {
-        .modal-xl {
-            max-width: 50%;
+                    .bootstrap-dialog-close-button {
+                        float: right;
+                        font-size: $bootstrap-dialog-close-button-font-size;
+                        opacity: $bootstrap-dialog-close-button-opacity;
+
+                        &:hover {
+                            cursor: pointer;
+                            opacity: $bootstrap-dialog-close-button-hover-opacity;
+                        }
+
+                        button.close {
+                        }
+                    }
+                }
+            }
+
+            .modal-body {
+                .bootstrap-dialog-body {
+                    .bootstrap-dialog-message {
+                        font-size: $bootstrap-dialog-message-font-size;
+                    }
+                }
+
+                .bootstrap-dialog-iframe{
+                    width:100%;
+                    margin:0;
+                    padding:0;
+                    border:none;
+                }
+            }
+
+            .modal-footer {
+            }
+        }
+    }
+    // THEMES
+    &.type-info {
+        .modal-header {
+            background-color: $bootstrap-dialog-info-modal-header-background-color;
         }
     }
 
-    &type-default .modal-header {
-        background-color: #fff;
+    &.type-primary {
+        .modal-header {
+            background-color: $bootstrap-dialog-primary-modal-header-background-color;
+            color: $bootstrap-dialog-primary-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-primary-modal-header-color;
+            }
+        }
     }
 
-    &type-default .bootstrap-dialog-title {
-        color: #515151;
+    &.type-secondary {
+        .modal-header {
+            background-color: $bootstrap-dialog-secondary-modal-header-background-color;
+            color: $bootstrap-dialog-secondary-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-secondary-modal-header-color;
+            }
+        }
     }
 
-    &type-info .modal-header {
-        background-color: #17a2b8;
+    &.type-success {
+        .modal-header {
+            background-color: $bootstrap-dialog-success-modal-header-background-color;
+            color: $bootstrap-dialog-success-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-success-modal-header-color;
+            }
+        }
     }
 
-    &type-primary .modal-header {
-        background-color: #007bff;
+    &.type-warning {
+        .modal-header {
+            background-color: $bootstrap-dialog-warning-modal-header-background-color;
+            color: $bootstrap-dialog-warning-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-warning-modal-header-color;
+            }
+        }
     }
 
-    &type-secondary .modal-header {
-        background-color: #6c757d;
+    &.type-danger {
+        .modal-header {
+            background-color: $bootstrap-dialog-danger-modal-header-background-color;
+            color: $bootstrap-dialog-danger-modal-header-color;
+
+            button.close {
+                color: $bootstrap-dialog-danger-modal-header-color;
+            }
+        }
     }
 
-    &type-success .modal-header {
-        background-color: #28a745;
+    &.type-light {
+        .modal-header {
+            background-color: $bootstrap-dialog-light-modal-header-background-color;
+            color: $bootstrap-dialog-light-modal-header-color;
+
+            .bootstrap-dialog-close-button {
+                color: $bootstrap-dialog-light-modal-header-color;
+            }
+        }
     }
 
-    &type-warning .modal-header {
-        background-color: #ffc107;
-    }
+    &.type-dark {
+        .modal-header {
+            background-color: $bootstrap-dialog-dark-modal-header-background-color;
+            color: $bootstrap-dialog-dark-modal-header-color;
 
-    &type-danger .modal-header {
-        background-color: #dc3545;
-    }
-
-    &type-light .modal-header {
-        background-color: #f8f9fa;
-    }
-
-    &type-dark .modal-header {
-        background-color: #343a40;
-    }
-
-    &size-large .bootstrap-dialog-title {
-        font-size: 24px;
-    }
-
-    &size-large .bootstrap-dialog-close-button {
-        font-size: 30px;
-    }
-
-    &size-large .bootstrap-dialog-message {
-        font-size: 18px;
-    }
-}
-
-.icon-spin {
-    display: inline-block;
-    -moz-animation: spin 2s infinite linear;
-    -o-animation: spin 2s infinite linear;
-    -webkit-animation: spin 2s infinite linear;
-    animation: spin 2s infinite linear;
-}
-
-@-moz-keyframes spin {
-    0% {
-        -moz-transform: rotate(0deg);
-    }
-
-    100% {
-        -moz-transform: rotate(359deg);
-    }
-}
-
-@-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-
-    100% {
-        -webkit-transform: rotate(359deg);
-    }
-}
-
-@-o-keyframes spin {
-    0% {
-        -o-transform: rotate(0deg);
-    }
-
-    100% {
-        -o-transform: rotate(359deg);
-    }
-}
-
-@-ms-keyframes spin {
-    0% {
-        -ms-transform: rotate(0deg);
-    }
-
-    100% {
-        -ms-transform: rotate(359deg);
-    }
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(359deg);
+            .bootstrap-dialog-close-button {
+                color: $bootstrap-dialog-dark-modal-header-color;
+            }
+        }
     }
 }
