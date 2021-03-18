@@ -7,6 +7,7 @@
     font-size: $bootstrap-dialog-font-size;
 
     .modal-dialog {
+        max-width:100%;
         .modal-content {
             .modal-header {
                 border-top-left-radius: $modal-header-border-top-left-radius;
