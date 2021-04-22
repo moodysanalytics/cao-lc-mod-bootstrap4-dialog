@@ -325,13 +325,6 @@
 
     BootstrapDialog.METHODS_TO_OVERRIDE = {};
     BootstrapDialog.METHODS_TO_OVERRIDE['v3.1'] = {
-        handleModalBackdropEvent: function () {
-            this.getModal().on('click', { dialog: this }, function (event) {
-                event.target === this && event.data.dialog.isClosable() && event.data.dialog.canCloseByBackdrop() && event.data.dialog.close();
-            });
-
-            return this;
-        },
         /**
          * To make multiple opened dialogs look better.
          *
@@ -364,7 +357,6 @@
         }
     };
     BootstrapDialog.METHODS_TO_OVERRIDE['v3.2'] = {
-        handleModalBackdropEvent: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['handleModalBackdropEvent'],
         updateZIndex: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['updateZIndex'],
         open: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['open']
     };
@@ -374,7 +366,6 @@
         getModalBackdrop: function ($modal) {
             return $($modal.data('bs.modal')._backdrop);
         },
-        handleModalBackdropEvent: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['handleModalBackdropEvent'],
         updateZIndex: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['updateZIndex'],
         open: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['open'],
         getModalForBootstrapDialogModal: function () {
@@ -385,7 +376,6 @@
         getModalBackdrop: function ($modal) {
             return $($modal.data('bs.modal')._backdrop);
         },
-        handleModalBackdropEvent: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['handleModalBackdropEvent'],
         updateZIndex: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['updateZIndex'],
         open: BootstrapDialog.METHODS_TO_OVERRIDE['v3.1']['open'],
         getModalForBootstrapDialogModal: function () {
@@ -660,13 +650,7 @@
         updateMessage: function () {
             if (this.isRealized()) {
                 var message = this.createDynamicContent(this.getMessage());
-
-                //if (this.hasIframe) {
-                //    console.log('hasIFramew');
-                //    this.getModalBody().find('.' + this.getNamespace('iframe')).src = message;
-                //} else {
-                    this.getModalBody().find('.' + this.getNamespace('message')).html('').append(message);
-                //}
+                this.getModalBody().find('.' + this.getNamespace('message')).html('').append(message);
             }
 
             return this;
@@ -1136,9 +1120,6 @@
                 }
             });
 
-            // Backdrop, I did't find a way to change bs3 backdrop option after the dialog is popped up, so here's a new wheel.
-            this.handleModalBackdropEvent();
-
             // ESC key support
             this.getModal().on('keyup', { dialog: this }, function (event) {
                 event.which === 27 && event.data.dialog.isClosable() && event.data.dialog.canCloseByKeyboard() && event.data.dialog.close();
@@ -1155,19 +1136,13 @@
 
             return this;
         },
-        handleModalBackdropEvent: function () {
-            this.getModal().on('click', { dialog: this }, function (event) {
-                $(event.target).hasClass('modal-backdrop') && event.data.dialog.isClosable() && event.data.dialog.canCloseByBackdrop() && event.data.dialog.close();
-            });
-
-            return this;
-        },
         isModalEvent: function (event) {
             return typeof event.namespace !== 'undefined' && event.namespace === 'bs.modal';
         },
         makeModalDraggable: function () {
             if (this.options.draggable) {
                 this.getModalHeader().addClass(this.getNamespace('draggable')).on('mousedown', { dialog: this }, function (event) {
+                    event.preventDefault();
                     var dialog = event.data.dialog;
                     dialog.draggableData.isMouseDown = true;
                     var dialogOffset = dialog.getModalDialog().offset();
@@ -1176,7 +1151,7 @@
                         left: event.clientX - dialogOffset.left
                     };
                 });
-                this.getModal().on('mouseup mouseleave', { dialog: this }, function (event) {
+                this.getModal().on('mouseup', { dialog: this }, function (event) {
                     event.data.dialog.draggableData.isMouseDown = false;
                 });
                 $('body').on('mousemove', { dialog: this }, function (event) {
@@ -1188,6 +1163,8 @@
                         top: event.clientY - dialog.draggableData.mouseOffset.top,
                         left: event.clientX - dialog.draggableData.mouseOffset.left
                     });
+                }).on('mouseleave', { dialog: this }, function (event) {
+                    event.data.dialog.draggableData.isMouseDown = false;
                 });
             }
 
@@ -1201,12 +1178,11 @@
             if (this.getDescription()) {
                 this.getModal().attr('aria-describedby', this.getDescription());
             }
+            //this.getModalFooter().append(this.createFooterContent());
             this.getModalHeader().append(this.createHeaderContent());
-
             this.getModalBody().append(this.createBodyContent());
-
             this.getModal().data('bs.modal', new BootstrapDialogModal(this.getModalForBootstrapDialogModal(), { //FIXME for BootstrapV4
-                backdrop: 'static',
+                backdrop: (this.isClosable() && this.canCloseByBackdrop()) ? true : 'static',
                 keyboard: false,
                 show: false
             }));
@@ -1235,20 +1211,7 @@
             this.getModal().modal('hide');
 
             return this;
-        },
-
-        //iFrame: false,
-        //createIFrame: function () {
-        //    this.iFrame = true;
-
-        //    var $iframe = $('<iframe />');
-        //    $iframe.addClass(this.getNamespace('iframe'));
-
-        //    return $iframe;
-        //},
-        //hasIframe: function () {
-        //    return (this.iFrame === true);
-        //}
+        }
     };
 
     // Add compatible methods.
@@ -1460,175 +1423,6 @@
         }).open();
     };
 
-    BootstrapDialog.log = function(msg) {
-        if (window.console && window.console.log) {
-            window.console.log("[bootstrap-dialog] " + msg);
-        }
-    }
-
-    BootstrapDialog.resizeTo = function(w, h) {
-        if (w != null) {
-            w = Math.min(w, screenWidth); // account for needed padding
-            if (w != lastWidth) {
-                log("resizeTo: w=" + w);
-                $(window.frameElement).closest('div.modal-content').width((lastWidth = w) + padding.left); // + 130);
-                reLocation(w);
-            }
-        }
-        if (h != null) {
-            h = Math.min(h, screenHeight); // account for needed padding
-            if (h != lastHeight) {
-                log("resizeTo: h=" + h);
-                $message.height((lastHeight = h) + padding.top); // + 100);
-            }
-        }
-    }
-
-    BootstrapDialog.bindToResize = function (watch_w, watch_h) {
-
-        var $doc = $("div[class*='container']").first();
-        if ($doc.length == 0)
-            $doc = $(window.document.documentElement);
-
-        padding = $doc.offset();
-        padding.left += padding.left + 40 + 20; // margin-left + margin-right + dialog.padding-left, dialog.padding-right + vertical-scrollbar
-        padding.top += padding.top + 20; // margin-top + margin-bottom + dialog.padding-left + dialog.padding-right
-
-        log("dialog.padding: x=" + padding.left + ", y=" + padding.top);
-
-        // height was always resized on load
-        var w = (watch_w) ? $doc[0].offsetWidth : null;
-        var h = $doc[0].offsetHeight; //[0].scrollHeight;
-        log("resizeTo(w=" + w + ", h=" + h + ")");
-        resizeTo(w, h);
-
-        if (!watch_w && !watch_h) { // || !$doc.hasClass("container-auto")) {
-            log("bindToResize: not watching");
-        } else {
-            log("bindToResize: watching { x: " + watch_w + ", y: " + watch_h + " }");
-            window.setInterval(read_interval, 200);
-        }
-
-        function read_w() {
-            return (watch_w) ? $doc[0].scrollWidth : w;
-        }
-
-        function read_h() {
-            return (watch_h) ? $doc[0].scrollHeight : h;
-        }
-
-        function write_hw() {
-            w = read_w();
-            h = read_h();
-        }
-
-        function read_interval() {
-            // resize w first to account for wrapping
-            var w2 = read_w();
-            var h2 = read_h();
-            if ((w != w2) || (h != h2)) {
-                resizeTo(w2, h2);
-                // regrab after repaint, because the size may shift
-                fastdom.read(write_hw);
-            }
-        }
-    };
-
-    BootstrapDialog.reLocation = function (w) {
-
-        var modal = $(window.frameElement).closest('div.modal-dialog');
-        var left = (($(top).width() / 2) - (w / 2));
-        log("Modal left " + left);
-
-        // Update the css and center the modal on screen
-        modal.css({
-            "position": "absolute",
-            "top": "0.5px",
-            "left": (left - 15) + "px",
-        });
-    };
-
     return BootstrapDialog;
 
 }));
-
-
-//BootstrapDialog.iFrame.Content = {}
-
-////// Content registers
-//var $frame = $(window.frameElement);
-//window.isModal = $frame.classList.contains(BootstrapDialog.getNamespace('iframe'));
-//if (window.isModal) {
-//    var lastWidth = 0;
-//    var lastHeight = 0;
-//    var screenWidth = window.top.innerWidth - BootstrapDialog.MARGIN;
-//    var screenHeight = window.top.innerHeight - BootstrapDialog.MARGIN;
-//    log("screen: " + screenWidth + ", " + screenHeight);
-
-
-//    var $dialog = $frame.closest("div.modal-dialog");
-//    var $btnConfirm = $dialog.find("#btn-confirm-frame");
-//    var $btnCancel = $dialog.find("#btn-cancel-frame");
-
-//    var $message = $dialog.find("div.bootstrap-dialog-message");
-//    var raw = $dialog.attr("data-responsive") + "";
-//    var rx = raw.indexOf('x') > -1;
-//    var ry = raw.indexOf('y') > -1;
-//    var responsive = rx || ry;
-//    var padding = { left: 0, top: 0 };
-//    log("isResponsive: " + raw);
-
-//    if (window.location.href.toLowerCase().indexOf("filemanager") > -1) {
-//        log("isFilemanager: true");
-//    } else if (responsive) {
-//        $(function () {
-//            // remove initial scrollbars
-//            window.document.body.style.overflow = 'hidden';
-//            // defer incase content is hide/show in page onload event
-//            window.setTimeout(function () {
-//                // watch for content resizing
-//                bindToResize(rx, ry);
-//                window.document.body.style.overflow = 'visible';
-//            }, 16);
-//        });
-//    }
-
-//    window.inModal = {
-//        ManualResize: bindToResize,
-//        reAdjustWidth: $.noop
-//    };
-//}
-
-//window.GetModalArguments = function () {
-//    var dataArgsJsonString = $frame.attr("data-args-json");
-//    if (dataArgsJsonString) {
-//        var result = JSON.parse(dataArgsJsonString);
-//        return result;
-//    }
-//    return null;
-//}
-
-//window.Close = function () {
-//    if (window.returnValue) {
-//        if (typeof window.returnValue == 'object') {
-//            log("event: [close] attach json.stringify")
-//            $btnConfirm.attr('data-json', JSON.stringify(window.returnValue));
-//        }
-//        else {
-//            log("event: [close] attach json string");
-//            $btnConfirm.attr('data-json', window.returnValue);
-//        }
-//    } else {
-//        log("event: [close] no return value");
-//    }
-
-//    window.setTimeout(function () { $btnConfirm.click(); }, 20);
-//    return false;
-//}
-
-//window.cancel = function () {
-//    // defer so that we don't get a freed script error
-//    log("event: [cancel]");
-//    window.setTimeout(function () { $btnCancel.click(); }, 20);
-//    return false;
-//}
