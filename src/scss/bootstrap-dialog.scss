@@ -7,7 +7,7 @@
     font-size: $bootstrap-dialog-font-size;
 
     .modal-dialog {
-        max-width:100%;
+        max-width: 100%;
         .modal-content {
             .modal-header {
                 border-top-left-radius: $modal-header-border-top-left-radius;
@@ -46,16 +46,17 @@
                     }
                 }
 
-                .bootstrap-dialog-iframe{
-                    width:100%;
-                    margin:0;
-                    padding:0;
-                    border:none;
+                .bootstrap-dialog-iframe {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    border: none;
                 }
             }
+        }
 
-            .modal-footer {
-            }
+        &.modal-sm {
+            max-width: $bootstrap-dialog-size-small-maxwidth;
         }
     }
     // THEMES
